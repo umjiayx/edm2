@@ -84,7 +84,7 @@ def edm_sampler(
         if guidance == 1:
             return Dx
         ref_Dx = gnet(x, t, labels).to(dtype)
-        return ref_Dx.lerp(Dx, guidance)
+        return ref_Dx.lerp(Dx, guidance) # Yixuan: Blend the score here! :)
 
     # Time step discretization.
     step_indices = torch.arange(num_steps, dtype=dtype, device=noise.device)
